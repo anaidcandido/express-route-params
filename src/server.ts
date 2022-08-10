@@ -26,7 +26,7 @@ app.get("/eat/carrot", (req, res) => {
   });
 });
 
-app.get("/echo/:exampleRouteParameter", (req, res) => {
+app.get<{exampleRouteParameter: string}>("/echo/:exampleRouteParameter", (req, res) => {
   const exampleRouteParameter = "the-quick-brown-fox"
   const echoContent = req.params.exampleRouteParameter;
   res.json({
@@ -35,7 +35,7 @@ app.get("/echo/:exampleRouteParameter", (req, res) => {
   });
 });
 
-app.get("/multiply/:numOne/:numTwo", (req, res) => {
+app.get<{numOne: string, numTwo: string}>("/multiply/:numOne/:numTwo", (req, res) => {
   /**
    * Note that `numOne` and `numTwo` are both typed as string.
    * (Hover over with your mouse to see!)
@@ -47,6 +47,7 @@ app.get("/multiply/:numOne/:numTwo", (req, res) => {
   const numTwo = "4"
   const multiplication = parseInt(numOne) * parseInt(numTwo);
   res.json({
+    multiply: `${req.params.numOne}, ${req.params.numTwo}`,
     original: `${numOne} x ${numTwo}`,
     result: multiplication,
   });
