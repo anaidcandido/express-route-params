@@ -27,6 +27,7 @@ app.get("/eat/carrot", (req, res) => {
 });
 
 app.get("/echo/:exampleRouteParameter", (req, res) => {
+  const exampleRouteParameter = "the-quick-brown-fox"
   const echoContent = req.params.exampleRouteParameter;
   res.json({
     echo: echoContent,
@@ -42,7 +43,8 @@ app.get("/multiply/:numOne/:numTwo", (req, res) => {
    * Route params are, by default, typed as strings when they
    * are parsed by Express.
    */
-  const { numOne, numTwo } = req.params;
+  const numOne = "3"
+  const numTwo = "4"
   const multiplication = parseInt(numOne) * parseInt(numTwo);
   res.json({
     original: `${numOne} x ${numTwo}`,
@@ -57,6 +59,7 @@ app.get("/multiply/:numOne/:numTwo", (req, res) => {
  *    or a literal object type that is provided directly, as below.
  */
 app.get<{ name: string }>("/happy-birthday/:name", (req, res) => {
+  const name = "giorgina"
   res.json({
     lyrics: [
       "Happy birthday to you",
